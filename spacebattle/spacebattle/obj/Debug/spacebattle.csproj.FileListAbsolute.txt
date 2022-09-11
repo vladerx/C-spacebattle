@@ -1,0 +1,10 @@
+C:\Users\fives\source\repos\spacebattle\spacebattle\bin\Debug\spacebattle.exe.config
+C:\Users\fives\source\repos\spacebattle\spacebattle\bin\Debug\spacebattle.exe
+C:\Users\fives\source\repos\spacebattle\spacebattle\bin\Debug\spacebattle.pdb
+C:\Users\fives\source\repos\spacebattle\spacebattle\obj\Debug\spacebattle.csproj.AssemblyReference.cache
+C:\Users\fives\source\repos\spacebattle\spacebattle\obj\Debug\spacebattle.Properties.Resources.resources
+C:\Users\fives\source\repos\spacebattle\spacebattle\obj\Debug\spacebattle.csproj.GenerateResource.cache
+C:\Users\fives\source\repos\spacebattle\spacebattle\obj\Debug\spacebattle.csproj.CoreCompileInputs.cache
+C:\Users\fives\source\repos\spacebattle\spacebattle\obj\Debug\spacebattle.exe
+C:\Users\fives\source\repos\spacebattle\spacebattle\obj\Debug\spacebattle.pdb
+C:\Users\fives\source\repos\spacebattle\spacebattle\obj\Debug\spacebattle.game.resources
