@@ -131,7 +131,121 @@ namespace spacebattle
             mainbox.Name = "map";
             //mainbox.BringToFront();
         }
-            
+        private void drawMainMenuImg() //form game size = 1652, 815
+        {
+            this.Size = new Size(715, 815);
+            Graphics g = Graphics.FromImage(mainbitmap);
+            g.Clear(Color.FromArgb(38, 38, 38));
+            g.DrawImage(imgS.mainMenuimgs[0], 0, 0);
+            mainbox.BackColor = Color.FromArgb(38, 38, 38);
+            mainbox.Location = new Point(0, 0);
+            mainbox.Image = mainbitmap;
+            mainbox.Parent = this;
+            mainbox.Name = "mainMenu";
+
+            for (int i = 0; i < 4; i++) {
+                PictureBox startbut = new PictureBox();
+                startbut.Location = new Point(buttoncords[i+4,0], buttoncords[i + 4, 1]);
+                startbut.SizeMode = PictureBoxSizeMode.AutoSize;
+                startbut.Image = imgS.mainMenuimgs[buttonindxs[i + 4]];
+                startbut.Name = buttonsnames[i+4];
+                startbut.Parent = this.GetChildAtPoint(startbut.Location);
+                buttonslist.Add(startbut);
+                startbut.MouseHover += new EventHandler(Mouse_Hover);
+                startbut.MouseLeave += new EventHandler(Mouse_Leave);
+                startbut.Click += new EventHandler(Button_Click);
+            }
+        }
+
+        private void Button_Click(object sender, EventArgs e)
+        {
+            var picBox = (PictureBox)sender;
+            if (picBox.Name == "fullscreen")
+            {
+                if (picBox.Image == imgS.settingsimgs[2])
+                {
+                    picBox.Image = imgS.settingsimgs[3];
+                }
+                else
+                {
+                    picBox.Image = imgS.settingsimgs[2];
+                }
+            }
+            else if (picBox.Name == "controls")
+            {
+                controlbut = 1;
+                return;
+            }
+            else if (picBox.Name == "resume")
+            {
+                resumebut = 1;
+                return;
+            }
+            else if (picBox.Name == "settings")
+            {
+                settingsbut = 1;
+                return;
+            }
+            else if (picBox.Name == "quit")
+            {
+                Application.Exit();
+            }
+        }
+
+        private void Mouse_Hover(object sender, EventArgs e) {
+            var picBox = (PictureBox)sender;
+            if (picBox.Name == "start")
+            {
+                picBox.Image = imgS.mainMenuimgs[2];
+                return;
+            } else if (picBox.Name == "shop") {
+                picBox.Image = imgS.mainMenuimgs[4];
+            }
+            else if (picBox.Name == "settings")
+            {
+                picBox.Image = imgS.mainMenuimgs[6];
+            }
+            else if (picBox.Name == "quit")
+            {
+                picBox.Image = imgS.mainMenuimgs[8];
+            }
+        }
+
+        private void Mouse_Leave(object sender, EventArgs e)
+        {
+            var picBox = (PictureBox)sender;
+            if (picBox.Name == "start")
+            {
+                picBox.Image = imgS.mainMenuimgs[1];
+                return;
+            }
+            else if (picBox.Name == "shop")
+            {
+                picBox.Image = imgS.mainMenuimgs[3];
+            }
+            else if (picBox.Name == "settings")
+            {
+                picBox.Image = imgS.mainMenuimgs[5];
+            }
+            else if (picBox.Name == "quit")
+            {
+                picBox.Image = imgS.mainMenuimgs[7];
+            }
+        }
+
+        private void removeMenuButtons()
+        {
+            foreach (PictureBox buts in buttonslist)
+            {
+                buts.Click -= Button_Click;
+                buts.Parent.Controls.Remove(buts);
+                if (settingsbut == 2) {
+                    buts.MouseHover -= Mouse_Hover;
+                    buts.MouseLeave -= Mouse_Leave;
+                }
+            }
+            buttonslist.Clear();
+        }    
 
         private void isKeyDown(object sender, KeyEventArgs e) //upon keydown changing movement in a direction
         {
